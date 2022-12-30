@@ -12,12 +12,12 @@ public class HelloServlet extends HttpServlet { //servlet은 HttpServlet을 상�
 
     @Override
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // 서블릿이 호출되면 service 클래스가 호출됨. Ctrl + O
+        // 서블릿이 호출되면 service 클래스가 호출됨. Ctrl + O -> protected service 선택
         System.out.println("HelloServlet.service");
         System.out.println("request = " + request);
         System.out.println("response = " + response);
 
-        String username = request.getParameter("username");
+        String username = request.getParameter("username"); //http://localhost:8080/hello?username=lee
         System.out.println("username = " + username);
 
         response.setContentType("text/plain"); //content-type에 들어감(header)
