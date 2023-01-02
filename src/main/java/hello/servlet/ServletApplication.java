@@ -12,4 +12,12 @@ public class ServletApplication {
         SpringApplication.run(ServletApplication.class, args);
     }
 
+    /**
+     * application.properties에서 설정해놓으면 자동으로 springboot가 해줌
+     */
+/*    @Bean
+    ViewResolver InternalResourceViewResolver() {
+        return new InternalResourceViewResolver("/WEB-INF/views/", ".jsp");
+    }*/
+
 }
