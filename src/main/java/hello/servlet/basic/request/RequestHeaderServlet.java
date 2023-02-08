@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @WebServlet(name = "requestHeaderServlet", urlPatterns = "/request-header")
-public class RequestHeraderServlet extends HttpServlet {
+public class RequestHeaderServlet extends HttpServlet {
     @Override
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         printStartLine(request);
@@ -93,13 +93,13 @@ public class RequestHeraderServlet extends HttpServlet {
     //기타 정보
     private void printEtc(HttpServletRequest request) {
         System.out.println("--- 기타 조회 start ---");
-        System.out.println("[Remote 정보]");
+        System.out.println("[Remote 정보]"); //Remote: 요청이 온 것에 대한 정보
         System.out.println("request.getRemoteHost() = " + request.getRemoteHost()); //
         System.out.println("request.getRemoteAddr() = " + request.getRemoteAddr()); //
         System.out.println("request.getRemotePort() = " + request.getRemotePort()); //
         System.out.println();
 
-        System.out.println("[Local 정보]");
+        System.out.println("[Local 정보]"); //Local: 나의 서버에 대한 정보
         System.out.println("request.getLocalName() = " + request.getLocalName()); //
         System.out.println("request.getLocalAddr() = " + request.getLocalAddr()); //
         System.out.println("request.getLocalPort() = " + request.getLocalPort()); //
