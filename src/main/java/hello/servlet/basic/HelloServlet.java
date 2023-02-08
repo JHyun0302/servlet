@@ -7,9 +7,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "helloServlet", urlPatterns = "/hello") //"/hello"로 들어오면 class 실행
+@WebServlet(name = "helloServlet", urlPatterns = "/hello") //"localhost:8080/hello"로 들어가면 class 실행
 public class HelloServlet extends HttpServlet { //servlet은 HttpServlet을 상속 받아야함
-
     @Override
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // 서블릿이 호출되면 service 클래스가 호출됨. Ctrl + O -> protected service 선택
