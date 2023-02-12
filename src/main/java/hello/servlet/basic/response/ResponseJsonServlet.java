@@ -12,6 +12,9 @@ import java.io.IOException;
 
 @WebServlet(name = "responseJsonServlet", urlPatterns = "/response-json")
 public class ResponseJsonServlet extends HttpServlet {
+    /**
+     * Html에 json으로 출력
+     */
     private ObjectMapper objectMapper = new ObjectMapper();
 
     @Override
