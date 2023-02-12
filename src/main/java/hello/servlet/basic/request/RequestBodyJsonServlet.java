@@ -13,10 +13,13 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 
+/**
+ * post로 보낸 요청 데이터를 HelloData 자바 객체로 변환
+ */
 @WebServlet(name = "requestBodyJsonServlet", urlPatterns = "/request-body-json")
 public class RequestBodyJsonServlet extends HttpServlet {
 
-    private ObjectMapper objectMapper = new ObjectMapper(); //HelloData파일의 username, age에 값 넣기
+    private ObjectMapper objectMapper = new ObjectMapper();
 
     @Override
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
