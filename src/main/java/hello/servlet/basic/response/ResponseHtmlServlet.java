@@ -10,6 +10,9 @@ import java.io.PrintWriter;
 
 @WebServlet(name = "responseHtmlServlet", urlPatterns = "/response-html")
 public class ResponseHtmlServlet extends HttpServlet {
+    /**
+     * Html에 바로 출력
+     */
 
     @Override
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -23,6 +26,5 @@ public class ResponseHtmlServlet extends HttpServlet {
         writer.println(" <div>안녕?</div>");
         writer.println("</body>");
         writer.println("</html>");
-        
     }
 }
