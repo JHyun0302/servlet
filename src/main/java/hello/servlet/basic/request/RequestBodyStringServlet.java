@@ -16,7 +16,7 @@ public class RequestBodyStringServlet extends HttpServlet {
     @Override
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         ServletInputStream inputStream = request.getInputStream();
-        String messageBody = StreamUtils.copyToString(inputStream, StandardCharsets.UTF_8);//메세지 body내용을 byte code -> string으로 전환. spring이 제공하는 유틸리티
+        String messageBody = StreamUtils.copyToString(inputStream, StandardCharsets.UTF_8);//메시지 body내용을 byte code -> string으로 전환. spring이 제공하는 유틸리티
         System.out.println("messageBody = " + messageBody);
 
         response.getWriter().write("ok");
