@@ -12,6 +12,10 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 
+/**
+ * 서블릿으로 만든 HTML: 회원 목록
+ * 서블릿 장점: 파일 중간에 자바 코드로 넣을 수 있음
+ */
 @WebServlet(name = "memberListServlet", urlPatterns = "/servlet/members")
 public class MemberListServlet extends HttpServlet {
     private MemberRepository memberRepository = MemberRepository.getInstance();
@@ -22,7 +26,6 @@ public class MemberListServlet extends HttpServlet {
 
         response.setContentType("text/html");
         response.setCharacterEncoding("utf-8");
-
         PrintWriter w = response.getWriter();
         w.write("<html>");
         w.write("<head>");

@@ -11,6 +11,11 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+/**
+ * 서블릿 HTML에서 전송한 데이터 저장
+ * 서블릿 장점: 파일 중간에 자바 코드로 넣을 수 있음
+ */
+
 @WebServlet(name = "memberSaveServlet", urlPatterns = "/servlet/members/save")
 public class MemberSaveServlet extends HttpServlet {
     private MemberRepository memberRepository = MemberRepository.getInstance();
@@ -26,7 +31,6 @@ public class MemberSaveServlet extends HttpServlet {
 
         response.setContentType("text/html");
         response.setCharacterEncoding("utf-8");
-
         PrintWriter w = response.getWriter();
         w.write("<html>\n" +
                 "<head>\n" +
