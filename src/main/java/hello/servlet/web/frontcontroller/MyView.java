@@ -20,9 +20,9 @@ public class MyView {
     }
 
     public void render(Map<String, Object> model, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        modelToRequestAttribute(model, request);
+        modelToRequestAttribute(model, request); //모델 data -> request.Attribute
         RequestDispatcher dispatcher = request.getRequestDispatcher(viewPath); //Controller에서 view로 이동
-        dispatcher.forward(request, response); //다른 서블릿이나 JSP로 이동하는 기능: request에 담긴 값 get으로 사용
+        dispatcher.forward(request, response); //다른 서블릿이나 JSP로 이동하는 기능 (request에 담긴 값 get으로 사용)
     }
 
     private static void modelToRequestAttribute(Map<String, Object> model, HttpServletRequest request) {
