@@ -15,6 +15,10 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * 서블릿 종속성 제거, 뷰 이름 중복 제거(논리 이름 사용), model 추가
+ * 특징: controller는 단순해졌으나 FrontController 일이 많아짐!
+ */
 @WebServlet(name = "frontControllerServletV3", urlPatterns = "/front-controller/v3/*")
 public class FrontControllerServletV3 extends HttpServlet {
     private Map<String, ControllerV3> controllerMap = new HashMap<>();
@@ -29,7 +33,7 @@ public class FrontControllerServletV3 extends HttpServlet {
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         System.out.println("FrontControllerServletV3.service");
         //1. 매핑 정보(컨트롤러 조회)
-        String requestURI = request.getRequestURI();///front-controller/V3/members/new-form 경로 얻을 수 있음
+        String requestURI = request.getRequestURI();// "/front-controller/V3/members/new-form" 경로 얻을 수 있음
         //2. 컨트롤러 호출
         ControllerV3 controller = controllerMap.get(requestURI); //new MemberFormControllerV3() 객체 인스턴스가 반환됨
         if (controller == null) {
@@ -38,7 +42,7 @@ public class FrontControllerServletV3 extends HttpServlet {
         }
 
         //3. ModelView 반환: paramMap
-        Map<String, String> paramMap = createParamMap(request);
+        Map<String, String> paramMap = createParamMap(request); //request 파라미터 정보
         ModelView mv = controller.process(paramMap);
         //4. viewResolver 호출
         String viewName = mv.getViewName();// 논리 이름: new-form
@@ -48,10 +52,12 @@ public class FrontControllerServletV3 extends HttpServlet {
         view.render(mv.getModel(), request, response); //ModelView에서 model 넘김
     }
 
+    //논리 이름 -> 물리 이름
     private static MyView viewResolver(String viewName) {
         return new MyView("/WEB-INF/views/" + viewName + ".jsp");
     }
 
+    //HttpServletRequest에서 파라미터 정보를 꺼내서 Map에 저장 & 반환
     private static Map<String, String> createParamMap(HttpServletRequest request) {
         Map<String, String> paramMap = new HashMap<>();
         request.getParameterNames().asIterator()
