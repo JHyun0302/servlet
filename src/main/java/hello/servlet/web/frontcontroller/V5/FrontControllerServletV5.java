@@ -14,30 +14,23 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * v3, v4 모든 버전 사용하기 ->  어댑터 추가
+ * 핸들러: 더 넒은 범위의 컨트롤러
+ */
 @WebServlet(name = "frontControllerServletV5", urlPatterns = "/front-controller/v5/*")
 public class FrontControllerServletV5 extends HttpServlet {
     //V4: private Map<String, ControllerV4> controllerMap = new HashMap<>();
-    /*private final Map<String, Object> handlerMappingMap = new HashMap<>();*/
-    private final List<MyHandlerAdapter> handlerAdapters = new ArrayList<>();
+    //V5(어탭터 적용): private final Map<String, Object> handlerMappingMap = new HashMap<>();
+    private final List<MyHandlerAdapter> handlerAdapters = new ArrayList<>(); //여러 핸들러 중 찾아서 쓰기
     private final InitHandlerMappingMap initHandlerMappingMap = new InitHandlerMappingMap();
 
 
     public FrontControllerServletV5() {
         initHandlerMappingMap.initHandlerMappingMap();
- 
+
         initHandlerAdapters();
     }
-
-/*    private void initHandlerMappingMap() {
-        handlerMappingMap.put("/front-controller/v5/v3/members/new-form", new MemberFormControllerV3()); // new-form.jsp 실행되면 new MemberFormControllerV3()이 실행됨
-        handlerMappingMap.put("/front-controller/v5/v3/members/save", new MemberSaveControllerV3()); // save.jsp 실행되면 new MemberSaveControllerV3()이 실행됨
-        handlerMappingMap.put("/front-controller/v5/v3/members", new MemberListControllerV3());
-
-        //V4 추가
-        handlerMappingMap.put("/front-controller/v5/v4/members/new-form", new MemberFormControllerV4()); // new-form.jsp 실행되면 new MemberFormControllerV4()이 실행됨
-        handlerMappingMap.put("/front-controller/v5/v4/members/save", new MemberSaveControllerV4()); // save.jsp 실행되면 new MemberSaveControllerV4()이 실행됨
-        handlerMappingMap.put("/front-controller/v5/v4/members", new MemberListControllerV4());
-    }*/
 
     private void initHandlerAdapters() {
         handlerAdapters.add(new ControllerV3HandlerAdapter());
