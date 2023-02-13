@@ -14,6 +14,9 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * view 분리
+ */
 @WebServlet(name = "frontControllerServletV2", urlPatterns = "/front-controller/v2/*")
 public class FrontControllerServletV2 extends HttpServlet {
     private Map<String, ControllerV2> controllerMap = new HashMap<>();
@@ -30,7 +33,7 @@ public class FrontControllerServletV2 extends HttpServlet {
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         System.out.println("FrontControllerServletV2.service");
 
-        String requestURI = request.getRequestURI();///front-controller/V2/members/new-form 경로 얻을 수 있음
+        String requestURI = request.getRequestURI();// "/front-controller/V2/members/new-form" 경로 얻을 수 있음
 
         ControllerV2 controller = controllerMap.get(requestURI); //new MemberFormControllerV2() 객체 인스턴스가 반환됨
         if (controller == null) {
