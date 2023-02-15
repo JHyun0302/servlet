@@ -11,12 +11,16 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
+/**
+ * frontcontroller v3 -> v4 유사
+ * 직접 ModelView 생성해서 반환할 필요 없음
+ */
 @Controller
 @RequestMapping("/springmvc/v3/members")
 public class SpringMemberControllerV3 {
     private MemberRepository memberRepository = MemberRepository.getInstance();
 
-    //    @RequestMapping(value = "/new-form", method = RequestMethod.GET) //Post Man: Post로 send하면 error 뜸
+    //    @RequestMapping(value = "/new-form", method = RequestMethod.GET) //Post Man: Post로 send하면 error 뜸(제약 걸기)
     @GetMapping("/new-form")
     public String newForm() {
         return "new-form";
@@ -25,7 +29,7 @@ public class SpringMemberControllerV3 {
     //    @RequestMapping(value = "/save", method = RequestMethod.POST)
     @PostMapping("/save")
     public String save(
-            @RequestParam("username") String username,
+            @RequestParam("username") String username, //@RequestParam("username") == request.getParameter("username")
             @RequestParam("age") int age,
             Model model) {
 
