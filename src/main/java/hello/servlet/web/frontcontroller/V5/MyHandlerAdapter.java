@@ -10,5 +10,5 @@ import java.io.IOException;
 public interface MyHandlerAdapter {
     boolean supports(Object handler);
 
-    ModelView handle(HttpServletRequest request, HttpServletResponse response, Object handler) throws ServletException, IOException; // ==컨트롤러
+    ModelView handle(HttpServletRequest request, HttpServletResponse response, Object handler) throws ServletException, IOException; // 핸들러 어댑터
 }
