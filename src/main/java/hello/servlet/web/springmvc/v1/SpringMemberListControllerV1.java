@@ -8,6 +8,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 
+/**
+ * mvc 패턴
+ */
 @Controller
 public class SpringMemberListControllerV1 {
     private MemberRepository memberRepository = MemberRepository.getInstance();

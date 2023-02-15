@@ -9,6 +9,9 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+/**
+ * mvc 패턴
+ */
 @Controller
 public class SpringMemberSaveControllerV1 {
     private MemberRepository memberRepository = MemberRepository.getInstance();
